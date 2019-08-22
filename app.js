@@ -5,20 +5,21 @@ var cats = [{
   color: '#BE976D'
 }, {
   name: 'Jay',
-  count: 6,
+  count: 0,
   color: '#5186A0'
 }, {
   name: 'Bonnie',
-  count: 8,
+  count: 0,
   color: '#5B75A6'
 }, {
   name: 'Daniel',
-  count: 15,
+  count: 0,
   color: '#C56F71'
 }];
 
 // Load selected cat
 function loadCat(id) {
+
   let Template = `
     <img class="cat-image" src="img/Cat${id}.png" alt="A cat image">
     <p class="cat-name" style="color: ${cats[id].color}">
@@ -31,6 +32,12 @@ function loadCat(id) {
   $('.container-cat').append(Template);
   $('.cat-list-item').removeClass('selected-cat');
   $('[data-id=' + id + ']').addClass('selected-cat');
+
+  $('.cat-image').click(function() {
+    cats[id].count++;
+    $('.num-of-clicks').text('Clicks: ' + cats[id].count);
+  });
+
 }
 
 // Load default cat
