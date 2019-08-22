@@ -5,15 +5,22 @@
   <meta charset="utf-8">
   <title>Cat Clicker</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css?family=Gochi+Hand&display=swap" rel="stylesheet">
+  <link href="https://fonts.font.im/css?family=Montserrat:300,600" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
 <body>
 
   <div class="img-container">
-    <img class="cat" src="img/Cat2.png" alt="A cat image">
-    <p class="num-of-clicks">Clicks: 0</p>
+    <img id="cat1" class="cat-image" src="img/Cat2.png" alt="A cat image">
+    <p id="cat-name-1" class="cat-name"></p>
+    <p class="num-of-clicks" id="clicks-1">Clicks: 0</p>
+  </div>
+
+  <div class="img-container">
+    <img id="cat2" class="cat-image" src="img/Cat2.png" alt="Another cat image">
+    <p id="cat-name-2" class="cat-name"></p>
+    <p class="num-of-clicks" id="clicks-2">Clicks: 0</p>
   </div>
 
   <script src="app.js"></script>
