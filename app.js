@@ -1,6 +1,5 @@
 // Initialise variables
-var cats = [
-{
+var cats = [{
   name: 'Alice',
   count: 0,
   color: '#BE976D'
@@ -16,8 +15,7 @@ var cats = [
   name: 'Daniel',
   count: 15,
   color: '#C56F71'
-}
-];
+}];
 
 // Load selected cat
 function loadCat(id) {
@@ -29,7 +27,9 @@ function loadCat(id) {
     <p class="num-of-clicks" style="color: ${cats[id].color}">
       Clicks: ${cats[id].count}
     </p>`;
+  $('.container-cat').empty();
   $('.container-cat').append(Template);
+  $('.cat-list-item').removeClass('selected-cat');
   $('[data-id=' + id + ']').addClass('selected-cat');
 }
 
@@ -66,3 +66,13 @@ $('#cat3').click(function() {
   count3++;
   $('#clicks-3').text('Clicks: ' + count3);
 });
+
+
+for (var i = 0; i < cats.length; i++) {
+  let catName = $('[data-id='+ i + ']');
+  catName.click((function(numCopy) {
+    return function() {
+      loadCat(numCopy);
+    };
+  })(i));
+};
