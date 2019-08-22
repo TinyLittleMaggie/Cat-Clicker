@@ -19,12 +19,6 @@ var cats = [
 }
 ];
 
-// Load the list of cats
-cats.forEach(function(cat) {
-  let Template = `<li class='cat-list-item'>${cat.name}</li>`;
-  $('.cat-list').append(Template);
-});
-
 // Load selected cat
 function loadCat(id) {
   let Template = `
@@ -38,6 +32,13 @@ function loadCat(id) {
   $('.container-cat').append(Template);
 }
 
+// Load the list of cats
+cats.forEach(function(cat) {
+  let Template = `<li class='cat-list-item'>${cat.name}</li>`;
+  $('.cat-list').append(Template);
+});
+
+// Load the default cat
 loadCat(0);
 
 // Handle clicks
