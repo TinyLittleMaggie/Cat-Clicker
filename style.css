@@ -1,0 +1,46 @@
+html {
+  height: 100%;
+}
+
+body {
+  background-color: #bce0d5;
+  width: 100%;
+  min-height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+}
+
+img {
+  width: 300px;
+  display: block;
+  margin: auto;
+}
+
+img:hover {
+  cursor: pointer;
+}
+
+.img-container {
+  width: 400px;
+  height: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+}
+
+p {
+  width: 300px;
+  text-align: center;
+  color: #52A36E;
+  font-family: 'Gochi Hand', sans-serif;
+  font-size: 2em;
+  margin-top: 0;
+  margin-bottom: 2em;
+}
