@@ -52,22 +52,6 @@ function init() {
 init();
 
 // Handle clicks
-$('#cat1').click(function() {
-  count1++;
-  $('#clicks-1').text('Clicks: ' + count1);
-});
-
-$('#cat2').click(function() {
-  count2++;
-  $('#clicks-2').text('Clicks: ' + count2);
-});
-
-$('#cat3').click(function() {
-  count3++;
-  $('#clicks-3').text('Clicks: ' + count3);
-});
-
-
 for (var i = 0; i < cats.length; i++) {
   let catName = $('[data-id='+ i + ']');
   catName.click((function(numCopy) {
