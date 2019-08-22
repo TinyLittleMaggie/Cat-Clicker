@@ -3,7 +3,6 @@ html {
 }
 
 body {
-  background-color: #bce0d5;
   width: 100%;
   min-height: 100%;
   margin-left: auto;
@@ -14,7 +13,7 @@ body {
   justify-content: center;
 }
 
-#cat1, #cat2 {
+#cat1, #cat2, #cat3 {
   width: 300px;
   display: block;
   margin: auto;
@@ -38,7 +37,7 @@ body {
 .cat-name {
   width: 300px;
   text-align: center;
-  color: #52A36E;
+  color: #606060;
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
   font-size: 2.5em;
@@ -49,7 +48,7 @@ body {
 .num-of-clicks {
   width: 300px;
   text-align: center;
-  color: #52A36E;
+  color: #606060;
   font-family: 'Montserrat', sans-serif;
   font-weight: 300;
   font-size: 1.5em;
