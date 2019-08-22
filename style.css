@@ -14,13 +14,13 @@ body {
   justify-content: center;
 }
 
-img {
+.cat {
   width: 300px;
   display: block;
   margin: auto;
 }
 
-img:hover {
+.cat:hover {
   cursor: pointer;
 }
 
