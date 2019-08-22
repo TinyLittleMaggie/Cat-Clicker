@@ -1,17 +1,39 @@
 // Initialise variables
-var count1 = 0;
-var count2 = 0;
-var count3 = 0;
-var catName1 = 'Alice';
-var catName2 = 'Jay';
-var catName3 = 'Bonnie';
+var cats = [{
+  name: 'Alice',
+  count: 0,
+  color: '#BE976D'
+}, {
+  name: 'Jay',
+  count: 6,
+  color: '#5186A0'
+}, {
+  name: 'Bonnie',
+  count: 8,
+  color: '#C56F71'
+}, {
+  name: 'Daniel',
+  count: 15,
+  color: '#5B75A6'
+}];
 
+// Load the list of cats
+cats.forEach(function(cat) {
+  let Template = `<li class='cat-list-item'>${cat.name}</li>`;
+  $('.cat-list').append(Template);
+});
 
-// Display cat names
-$('#cat-name-1').text(catName1);
-$('#cat-name-2').text(catName2);
-$('#cat-name-3').text(catName3);
+// Load selected cat
+function loadCat(id) {
+  let Template = `
+    <img class="cat-image" src="img/Cat${id}.png" alt="A cat image">
+    <p class="cat-name">${cats[id].name}</p>
+    <p class="num-of-clicks">Clicks: ${cats[id].count}</p>`;
+  $('.container-cat').append(Template);
+  $('.cat-name').css('color: ' + cats[id].color + ';');
+}
 
+loadCat(0);
 
 // Handle clicks
 $('#cat1').click(function() {
