@@ -30,6 +30,7 @@ function loadCat(id) {
       Clicks: ${cats[id].count}
     </p>`;
   $('.container-cat').append(Template);
+  $('[data-id=' + id + ']').addClass('selected-cat');
 }
 
 // Load default cat
@@ -45,7 +46,6 @@ function init() {
 
   // Load the default cat
   loadCat(0);
-  $('[data-id=0]').addClass('selected-cat');
 
 }
 
