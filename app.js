@@ -49,6 +49,7 @@ function init() {
 
 }
 
+// Initialise the page
 init();
 
 // Handle clicks
