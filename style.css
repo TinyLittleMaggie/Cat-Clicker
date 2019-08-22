@@ -75,6 +75,10 @@ body {
   cursor: pointer;
 }
 
+.selected-cat {
+  text-decoration: underline;
+}
+
 .cat-name {
   width: 300px;
   text-align: center;

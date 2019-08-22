@@ -32,14 +32,24 @@ function loadCat(id) {
   $('.container-cat').append(Template);
 }
 
-// Load the list of cats
-cats.forEach(function(cat) {
-  let Template = `<li class='cat-list-item'>${cat.name}</li>`;
-  $('.cat-list').append(Template);
-});
+// Load default cat
+function init() {
 
-// Load the default cat
-loadCat(0);
+  // Load the list of cats
+  let id = 0;
+  cats.forEach(function(cat) {
+    let Template = `<li class='cat-list-item' data-id='${id}'>${cat.name}</li>`;
+    $('.cat-list').append(Template);
+    id++;
+  });
+
+  // Load the default cat
+  loadCat(0);
+  $('[data-id=0]').addClass('selected-cat');
+
+}
+
+init();
 
 // Handle clicks
 $('#cat1').click(function() {
