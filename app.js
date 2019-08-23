@@ -22,13 +22,11 @@ var octopus = {
   init: function() {
 
     // Load the list of cats
-    view.loadList();
+    view1.loadList();
+    view1.handleClicks();
 
     // Load the default cat
-    view.loadCat(0);
-
-    // Handle Clicks
-    view.handleClicks();
+    view2.loadCat(0);
 
   },
 
@@ -47,7 +45,33 @@ var octopus = {
 
 };
 
-var view = {
+var view1 = {
+
+  loadList: function() {
+    // Load the list of cats
+    let id = 0;
+    octopus.getNames().forEach(function(name) {
+      let Template = `<li class='cat-list-item'
+      data-id='${id}'>${name}</li>`;
+      $('.cat-list').append(Template);
+      id++;
+    });
+  },
+
+  // Handle clicks
+  handleClicks: function() {
+    for (var i = 0; i < model.length; i++) {
+      let catName = $('[data-id='+ i + ']');
+      catName.click((function(numCopy) {
+        return function() {
+          view2.loadCat(numCopy);
+        };
+      })(i));
+    };
+  }
+};
+
+var view2 = {
 
   // Load selected cat
   loadCat: function(id) {
@@ -70,30 +94,8 @@ var view = {
       $('.num-of-clicks').text('Clicks: ' + octopus.getCat(id).count);
     });
 
-  },
-
-  loadList: function() {
-    // Load the list of cats
-    let id = 0;
-    octopus.getNames().forEach(function(name) {
-      let Template = `<li class='cat-list-item'
-      data-id='${id}'>${name}</li>`;
-      $('.cat-list').append(Template);
-      id++;
-    });
-  },
-
-  // Handle clicks
-  handleClicks: function() {
-    for (var i = 0; i < model.length; i++) {
-      let catName = $('[data-id='+ i + ']');
-      catName.click((function(numCopy) {
-        return function() {
-          view.loadCat(numCopy);
-        };
-      })(i));
-    };
   }
+
 };
 
 octopus.init();
