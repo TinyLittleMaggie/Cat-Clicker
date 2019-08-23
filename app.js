@@ -1,4 +1,3 @@
-// Initialise variables
 var model = [{
   name: 'Alice',
   count: 0,
@@ -17,54 +16,84 @@ var model = [{
   color: '#C56F71'
 }];
 
-// Load selected cat
-function loadCat(id) {
+var octopus = {
 
-  let Template = `
-    <img class="cat-image" src="img/Cat${id}.png" alt="A cat image">
-    <p class="cat-name" style="color: ${model[id].color}">
-      ${model[id].name}
-    </p>
-    <p class="num-of-clicks" style="color: ${model[id].color}">
-      Clicks: ${model[id].count}
-    </p>`;
-  $('.container-cat').empty();
-  $('.container-cat').append(Template);
-  $('.cat-list-item').removeClass('selected-cat');
-  $('[data-id=' + id + ']').addClass('selected-cat');
+  // Load default cat
+  init: function() {
 
-  $('.cat-image').click(function() {
-    model[id].count++;
-    $('.num-of-clicks').text('Clicks: ' + model[id].count);
-  });
+    // Load the list of cats
+    view.loadList();
 
-}
+    // Load the default cat
+    view.loadCat(0);
 
-// Load default cat
-function init() {
+    // Handle Clicks
+    view.handleClicks();
 
-  // Load the list of cats
-  let id = 0;
-  model.forEach(function(cat) {
-    let Template = `<li class='cat-list-item' data-id='${id}'>${cat.name}</li>`;
-    $('.cat-list').append(Template);
-    id++;
-  });
+  },
 
-  // Load the default cat
-  loadCat(0);
+  getNames: function(){
+    let names = [];
+    model.forEach(function(cat) {
+      names.push(cat.name);
+    });
+    return names;
+  },
 
-}
+  // Get cat data for 'view' to use
+  getCat: function(id) {
+    return model[id];
+  }
 
-// Initialise the page
-init();
-
-// Handle clicks
-for (var i = 0; i < model.length; i++) {
-  let catName = $('[data-id='+ i + ']');
-  catName.click((function(numCopy) {
-    return function() {
-      loadCat(numCopy);
-    };
-  })(i));
 };
+
+var view = {
+
+  // Load selected cat
+  loadCat: function(id) {
+
+    let Template = `
+      <img class="cat-image" src="img/Cat${id}.png" alt="A cat image">
+      <p class="cat-name" style="color: ${model[id].color}">
+        ${model[id].name}
+      </p>
+      <p class="num-of-clicks" style="color: ${model[id].color}">
+        Clicks: ${model[id].count}
+      </p>`;
+    $('.container-cat').empty();
+    $('.container-cat').append(Template);
+    $('.cat-list-item').removeClass('selected-cat');
+    $('[data-id=' + id + ']').addClass('selected-cat');
+
+    $('.cat-image').click(function() {
+      octopus.getCat(id).count++;
+      $('.num-of-clicks').text('Clicks: ' + octopus.getCat(id).count);
+    });
+
+  },
+
+  loadList: function() {
+    // Load the list of cats
+    let id = 0;
+    octopus.getNames().forEach(function(name) {
+      let Template = `<li class='cat-list-item'
+      data-id='${id}'>${name}</li>`;
+      $('.cat-list').append(Template);
+      id++;
+    });
+  },
+
+  // Handle clicks
+  handleClicks: function() {
+    for (var i = 0; i < model.length; i++) {
+      let catName = $('[data-id='+ i + ']');
+      catName.click((function(numCopy) {
+        return function() {
+          view.loadCat(numCopy);
+        };
+      })(i));
+    };
+  }
+};
+
+octopus.init();
