@@ -111,8 +111,19 @@ var catView = {
       $('.num-of-clicks').text('Clicks: ' + octopus.getCat(id).count);
     });
 
+    $('.edit-button').click(function() {
+      editView.render();
+    });
+
   }
 
+};
+
+var editView = {
+  render: function() {
+    let name = model.cats[model.currentCatID].name;
+    console.log(name + ' says: "I am clicked!"');
+  }
 };
 
 /* ========== Start! ========== */

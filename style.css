@@ -115,3 +115,52 @@ body {
 .edit-button:hover {
   cursor: pointer;
 }
+
+.edit-cat-form {
+  position: absolute;
+  border-radius: 10px;
+  margin-top: 15px;
+  margin-left: 100px;
+  padding-left: 80px;
+  width: 370px;
+  height: 320px;
+  background-color: #CCCCCC;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+}
+
+.edit-cat-form label {
+  color: #606060;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  font-size: 1.2em;
+  display: block;
+  margin: 0.8em 0 0.3em;
+}
+
+.edit-cat-form input {
+  color: #606060;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  font-size: 1.2em;
+  display: block;
+  width: 200px;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+}
+
+.edit-cat-form button {
+  width: 92px;
+  height: 40px;
+  background-color: #606060;
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  font-size: 1.2em;
+  border-radius: 8px;
+  border: none;
+  margin: 1em 0.6em 1em 0;
+
+}
