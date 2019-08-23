@@ -99,7 +99,8 @@ var catView = {
       </p>
       <p class="num-of-clicks" style="color: ${cat.color}">
         Clicks: ${cat.count}
-      </p>`;
+      </p>
+      <div class="edit-button">Edit</div>`;
     $('.container-cat').empty();
     $('.container-cat').append(Template);
     $('.cat-list-item').removeClass('selected-cat');
