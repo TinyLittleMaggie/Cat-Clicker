@@ -37,7 +37,7 @@ var octopus = {
 
   },
 
-  getNames: function(){
+  getNames: function() {
     let names = [];
     model.cats.forEach(function(cat) {
       names.push(cat.name);
@@ -76,7 +76,7 @@ var catListView = {
   handleClicks: function() {
     let numOfCats = octopus.getNames().length;
     for (var i = 0; i < numOfCats; i++) {
-      let catName = $('[data-id='+ i + ']');
+      let catName = $('[data-id=' + i + ']');
       catName.click((function(numCopy) {
         return function() {
           octopus.setCurrentCat(numCopy);
@@ -92,7 +92,7 @@ var catView = {
   // Load selected cat
   loadCat: function(id) {
     let cat = octopus.getCat(id);
-    let Template = `
+    let template = `
       <img class="cat-image" src="img/Cat${id}.png" alt="A cat image">
       <p class="cat-name" style="color: ${cat.color}">
         ${cat.name}
@@ -102,7 +102,7 @@ var catView = {
       </p>
       <div class="edit-button">Edit</div>`;
     $('.container-cat').empty();
-    $('.container-cat').append(Template);
+    $('.container-cat').append(template);
     $('.cat-list-item').removeClass('selected-cat');
     $('[data-id=' + id + ']').addClass('selected-cat');
 
@@ -113,6 +113,7 @@ var catView = {
 
     $('.edit-button').click(function() {
       editView.render();
+      console.log('Edit!')
     });
 
   }
@@ -122,6 +123,24 @@ var catView = {
 var editView = {
   render: function() {
     let name = model.cats[model.currentCatID].name;
+    let count = model.cats[model.currentCatID].count;
+    let template = `
+    <div class="form-container">
+      <div>
+        <label for="name">Name: </label>
+        <input type="text" id="name" placeholder="${name}">
+      </div>
+      <div>
+        <label for="email">Clicks: </label>
+        <input type="text" id="clicks" placeholder="${count}">
+      </div>
+      <div>
+        <button type="button" id="save">Save</button>
+        <button type="button" id="cancel">Cancel</button>
+      </div>
+    </div>`;
+    $('.form-container').remove();
+    $('.container-main').append(template);
     console.log(name + ' says: "I am clicked!"');
   }
 };
