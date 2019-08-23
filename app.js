@@ -1,3 +1,5 @@
+/* ========== Model ========== */
+
 var model = [{
   name: 'Alice',
   count: 0,
@@ -15,6 +17,8 @@ var model = [{
   count: 0,
   color: '#C56F71'
 }];
+
+/* ========= Octopus ========= */
 
 var octopus = {
 
@@ -44,6 +48,8 @@ var octopus = {
   }
 
 };
+
+/* ========== View ========== */
 
 var catListView = {
 
@@ -98,5 +104,7 @@ var catView = {
   }
 
 };
+
+/* ========== Start! ========== */
 
 octopus.init();
