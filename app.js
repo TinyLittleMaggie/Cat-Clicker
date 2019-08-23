@@ -113,7 +113,6 @@ var catView = {
 
     $('.edit-button').click(function() {
       editView.render();
-      console.log('Edit!')
     });
 
   }
@@ -122,6 +121,7 @@ var catView = {
 
 var editView = {
   render: function() {
+    // TODO: disconnect view from model!
     let name = model.cats[model.currentCatID].name;
     let count = model.cats[model.currentCatID].count;
     let template = `
@@ -141,7 +141,6 @@ var editView = {
     </div>`;
     $('.form-container').remove();
     $('.container-main').append(template);
-    console.log(name + ' says: "I am clicked!"');
   }
 };
 
