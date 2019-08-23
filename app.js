@@ -22,11 +22,11 @@ var octopus = {
   init: function() {
 
     // Load the list of cats
-    view1.loadList();
-    view1.handleClicks();
+    catListView.loadList();
+    catListView.handleClicks();
 
     // Load the default cat
-    view2.loadCat(0);
+    catView.loadCat(0);
 
   },
 
@@ -45,7 +45,7 @@ var octopus = {
 
 };
 
-var view1 = {
+var catListView = {
 
   loadList: function() {
     // Load the list of cats
@@ -65,14 +65,14 @@ var view1 = {
       let catName = $('[data-id='+ i + ']');
       catName.click((function(numCopy) {
         return function() {
-          view2.loadCat(numCopy);
+          catView.loadCat(numCopy);
         };
       })(i));
     };
   }
 };
 
-var view2 = {
+var catView = {
 
   // Load selected cat
   loadCat: function(id) {
