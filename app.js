@@ -1,5 +1,5 @@
 // Initialise variables
-var cats = [{
+var model = [{
   name: 'Alice',
   count: 0,
   color: '#BE976D'
@@ -22,11 +22,11 @@ function loadCat(id) {
 
   let Template = `
     <img class="cat-image" src="img/Cat${id}.png" alt="A cat image">
-    <p class="cat-name" style="color: ${cats[id].color}">
-      ${cats[id].name}
+    <p class="cat-name" style="color: ${model[id].color}">
+      ${model[id].name}
     </p>
-    <p class="num-of-clicks" style="color: ${cats[id].color}">
-      Clicks: ${cats[id].count}
+    <p class="num-of-clicks" style="color: ${model[id].color}">
+      Clicks: ${model[id].count}
     </p>`;
   $('.container-cat').empty();
   $('.container-cat').append(Template);
@@ -34,8 +34,8 @@ function loadCat(id) {
   $('[data-id=' + id + ']').addClass('selected-cat');
 
   $('.cat-image').click(function() {
-    cats[id].count++;
-    $('.num-of-clicks').text('Clicks: ' + cats[id].count);
+    model[id].count++;
+    $('.num-of-clicks').text('Clicks: ' + model[id].count);
   });
 
 }
@@ -45,7 +45,7 @@ function init() {
 
   // Load the list of cats
   let id = 0;
-  cats.forEach(function(cat) {
+  model.forEach(function(cat) {
     let Template = `<li class='cat-list-item' data-id='${id}'>${cat.name}</li>`;
     $('.cat-list').append(Template);
     id++;
@@ -60,7 +60,7 @@ function init() {
 init();
 
 // Handle clicks
-for (var i = 0; i < cats.length; i++) {
+for (var i = 0; i < model.length; i++) {
   let catName = $('[data-id='+ i + ']');
   catName.click((function(numCopy) {
     return function() {
