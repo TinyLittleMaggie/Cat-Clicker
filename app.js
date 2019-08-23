@@ -1,22 +1,25 @@
 /* ========== Model ========== */
 
-var model = [{
-  name: 'Alice',
-  count: 0,
-  color: '#BE976D'
-}, {
-  name: 'Jay',
-  count: 0,
-  color: '#5186A0'
-}, {
-  name: 'Bonnie',
-  count: 0,
-  color: '#5B75A6'
-}, {
-  name: 'Daniel',
-  count: 0,
-  color: '#C56F71'
-}];
+var model = {
+  currentCatID: 0,
+  cats: [{
+    name: 'Alice',
+    count: 0,
+    color: '#BE976D'
+  }, {
+    name: 'Jay',
+    count: 0,
+    color: '#5186A0'
+  }, {
+    name: 'Bonnie',
+    count: 0,
+    color: '#5B75A6'
+  }, {
+    name: 'Daniel',
+    count: 0,
+    color: '#C56F71'
+  }]
+};
 
 /* ========= Octopus ========= */
 
@@ -36,7 +39,7 @@ var octopus = {
 
   getNames: function(){
     let names = [];
-    model.forEach(function(cat) {
+    model.cats.forEach(function(cat) {
       names.push(cat.name);
     });
     return names;
@@ -44,7 +47,12 @@ var octopus = {
 
   // Get cat data for 'view' to use
   getCat: function(id) {
-    return model[id];
+    return model.cats[id];
+  },
+
+  // Set current cat ID
+  setCurrentCat: function(id) {
+    model.currentCatID = id;
   }
 
 };
@@ -71,6 +79,7 @@ var catListView = {
       let catName = $('[data-id='+ i + ']');
       catName.click((function(numCopy) {
         return function() {
+          octopus.setCurrentCat(numCopy);
           catView.loadCat(numCopy);
         };
       })(i));
