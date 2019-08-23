@@ -60,7 +60,8 @@ var view1 = {
 
   // Handle clicks
   handleClicks: function() {
-    for (var i = 0; i < model.length; i++) {
+    let numOfCats = octopus.getNames().length;
+    for (var i = 0; i < numOfCats; i++) {
       let catName = $('[data-id='+ i + ']');
       catName.click((function(numCopy) {
         return function() {
@@ -75,14 +76,14 @@ var view2 = {
 
   // Load selected cat
   loadCat: function(id) {
-
+    let cat = octopus.getCat(id);
     let Template = `
       <img class="cat-image" src="img/Cat${id}.png" alt="A cat image">
-      <p class="cat-name" style="color: ${model[id].color}">
-        ${model[id].name}
+      <p class="cat-name" style="color: ${cat.color}">
+        ${cat.name}
       </p>
-      <p class="num-of-clicks" style="color: ${model[id].color}">
-        Clicks: ${model[id].count}
+      <p class="num-of-clicks" style="color: ${cat.color}">
+        Clicks: ${cat.count}
       </p>`;
     $('.container-cat').empty();
     $('.container-cat').append(Template);
