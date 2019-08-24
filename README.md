@@ -1,7 +1,7 @@
 # Cat Clicker Premium Pro
 
-A [Udacity Front-End Development](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001) mini project\
-(Inspired by Ian Bogost's Cow Clicker Game)
+A [Udacity Front-End Development](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001) mini project
+(Based on Ian Bogost's Cow Clicker Game)
 
 ## Project Requirements
 
