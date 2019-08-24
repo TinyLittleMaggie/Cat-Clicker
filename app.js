@@ -51,8 +51,38 @@ var octopus = {
   },
 
   // Set current cat ID
-  setCurrentCat: function(id) {
+  setCurrentCatID: function(id) {
     model.currentCatID = id;
+  },
+
+  // Get current cat ID
+  getCurrentCatID: function() {
+    return model.currentCatID;
+  },
+
+  // Get current cat
+  getCurrentCat: function() {
+    return model.cats[model.currentCatID];
+  },
+
+  // Update name according to form input
+  updateName: function(name) {
+    let id = model.currentCatID;
+    // Update data
+    model.cats[id].name = name;
+    // Reload the list of cat and the selected cat
+    catListView.loadList();
+    catListView.handleClicks();
+    catView.loadCat(id);
+  },
+
+  // Update clicks according to form input
+  updateClicks: function(count) {
+    let id = model.currentCatID;
+    // Update data
+    model.cats[id].count = count;
+    // Reload the selected cat
+    catView.loadCat(id);
   }
 
 };
@@ -62,14 +92,20 @@ var octopus = {
 var catListView = {
 
   loadList: function() {
-    // Load the list of cats
+    // Empty out existing list
+    $('.cat-list-item').remove();
+    // Load the list with data
     let id = 0;
     octopus.getNames().forEach(function(name) {
-      let Template = `<li class='cat-list-item'
+      let template = `<li class='cat-list-item'
       data-id='${id}'>${name}</li>`;
-      $('.cat-list').append(Template);
+      $('.cat-list').append(template);
       id++;
     });
+    // Underline selected cat
+    let currentCatID = octopus.getCurrentCatID();
+    $('.cat-list-item').removeClass('selected-cat');
+    $('[data-id=' + currentCatID + ']').addClass('selected-cat');
   },
 
   // Handle clicks
@@ -79,7 +115,7 @@ var catListView = {
       let catName = $('[data-id=' + i + ']');
       catName.click((function(numCopy) {
         return function() {
-          octopus.setCurrentCat(numCopy);
+          octopus.setCurrentCatID(numCopy);
           catView.loadCat(numCopy);
         };
       })(i));
@@ -121,11 +157,10 @@ var catView = {
 
 var editView = {
   render: function() {
-    // TODO: disconnect view from model!
-    let name = model.cats[model.currentCatID].name;
-    let count = model.cats[model.currentCatID].count;
+    let name = octopus.getCurrentCat().name;
+    let count = octopus.getCurrentCat().count;
     let template = `
-    <div class="form-container">
+    <form class="form-container">
       <div>
         <label for="name">Name: </label>
         <input type="text" id="name" placeholder="${name}">
@@ -135,12 +170,30 @@ var editView = {
         <input type="text" id="clicks" placeholder="${count}">
       </div>
       <div>
-        <button type="button" id="save">Save</button>
+        <button type="submit" id="save">Save</button>
         <button type="button" id="cancel">Cancel</button>
       </div>
-    </div>`;
+    </form>`;
     $('.form-container').remove();
     $('.container-main').append(template);
+
+    $('#cancel').click(function() {
+      $('.form-container').remove();
+    });
+
+    $('.form-container').submit(function(event) {
+      let name = $('#name').val();
+      let clicks = $('#clicks').val();
+      if (name) {
+        octopus.updateName(name);
+      }
+      if (clicks) {
+        octopus.updateClicks(clicks);
+      }
+      $('.form-container').remove();
+      event.preventDefault();
+    });
+
   }
 };
 
